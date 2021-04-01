@@ -39,7 +39,6 @@ public class EmployerController {
     }
 
 
-
     @GetMapping("/")
     public String index(Model model, Employer newEmployer){
         model.addAttribute("title", "Find all");
