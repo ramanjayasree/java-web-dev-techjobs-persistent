@@ -4,6 +4,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @MappedSuperclass
@@ -14,7 +15,8 @@ public abstract class AbstractEntity {
     @GeneratedValue
     private int id;
 
-    @NotBlank
+    @NotBlank(message = "name is required")
+    @Size(max = 200, message = "name must be less than 200 character long")
     private String name;
 
     public int getId() {

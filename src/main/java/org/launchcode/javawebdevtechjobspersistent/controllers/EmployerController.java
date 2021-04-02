@@ -19,6 +19,13 @@ public class EmployerController {
     @Autowired
     private EmployerRepository employerRepository;
 
+    @GetMapping
+    public String displayAllEmployers(Model model){
+        model.addAttribute("title","All Employer");
+        model.addAttribute("employers", employerRepository.findAll());
+        return "employers/index";
+    }
+
 
     @GetMapping("add")
     public String displayAddEmployerForm(Model model) {
@@ -39,12 +46,12 @@ public class EmployerController {
     }
 
 
-    @GetMapping("/")
-    public String index(Model model, Employer newEmployer){
-        model.addAttribute("title", "Find all");
-        model.addAttribute("employers", employerRepository.findAll());
-        return "employers/index";
-    }
+//    @GetMapping("/")
+//    public String index(Model model, Employer newEmployer){
+//        model.addAttribute("title", "Find all");
+//        model.addAttribute("employers", employerRepository.findAll());
+//        return "employers/index";
+//    }
 
 
     @GetMapping("view/{employerId}")

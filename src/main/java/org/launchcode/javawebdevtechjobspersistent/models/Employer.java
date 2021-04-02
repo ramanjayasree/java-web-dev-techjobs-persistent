@@ -10,12 +10,17 @@ public class Employer extends AbstractEntity {
 
     public Employer(){};
 
-    @NotBlank
+    @NotBlank(message = "location is required")
     private String location;
 
-    @OneToMany
-    @JoinColumn
-    private List<Job> jobs = new ArrayList<Job>();
+    @OneToMany(mappedBy = "employer",cascade = CascadeType.ALL)
+    private List<Job> jobs = new ArrayList<>();
+
+    public Employer(String loc){
+        super();
+        this.location = loc;
+    }
+
 
     public String getLocation() {
         return location;
